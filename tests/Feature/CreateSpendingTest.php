@@ -26,7 +26,7 @@ class CreateSpendingTest extends TestCase
             ->actingAs($this->user)
             ->withSession(['space_id' => $this->space->id])
             ->postJson('/spendings', [
-                'date' => date('Y-m-d'),
+                'date' => date('d/m/Y'),
                 'description' => 'Something for the test',
                 'amount' => '9.999'
             ]);
@@ -42,7 +42,7 @@ class CreateSpendingTest extends TestCase
             ->actingAs($this->user)
             ->withSession(['space_id' => $this->space->id])
             ->postJson('/spendings', [
-                'date' => date('Y-m-d'),
+                'date' => date('d/m/Y'),
                 'description' => 'Something for the test',
                 'amount' => '9.99'
             ]);

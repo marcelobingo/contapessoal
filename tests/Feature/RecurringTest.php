@@ -36,7 +36,7 @@ class RecurringTest extends TestCase
             'type' => 'spending',
             'interval' => 'monthly',
             'day' => 1,
-            'start' => date('Y-m-d'),
+            'start' => date('d/m/Y'),
             'description' => 'Test',
             'amount' => 123,
             'currency_id' => $space->currency_id

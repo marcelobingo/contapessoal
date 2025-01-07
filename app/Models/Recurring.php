@@ -37,7 +37,7 @@ class Recurring extends Model
     protected function dueDays(): Attribute
     {
         return Attribute::make(function () {
-            if ($this->starts_on <= date('Y-m-d') && ($this->ends_on >= date('Y-m-d') || !$this->ends_on)) {
+            if ($this->starts_on <= date('d/m/Y') && ($this->ends_on >= date('d/m/Y') || !$this->ends_on)) {
                 if (date('j') > $this->day) {
                     return date('t') - date('j') + $this->day;
                 }
@@ -51,7 +51,7 @@ class Recurring extends Model
 
     protected function status(): Attribute
     {
-        return Attribute::make(fn() => $this->starts_on <= date('Y-m-d') && ($this->ends_on >= date('Y-m-d') || !$this->ends_on));
+        return Attribute::make(fn() => $this->starts_on <= date('d/m/Y') && ($this->ends_on >= date('d/m/Y') || !$this->ends_on));
     }
 
     // Relations

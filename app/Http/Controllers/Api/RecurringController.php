@@ -22,8 +22,8 @@ class RecurringController extends Controller
             'type' => ['required', 'in:earning,spending'],
             'interval' => ['required', Rule::enum(RecurringInterval::class)],
             'day' => ['required', 'regex:/\b(0?[1-9]|[12][0-9]|3[01])\b/'],
-            'start' => ['date', 'date_format:Y-m-d'],
-            'end' => ['nullable', 'date', 'date_format:Y-m-d'],
+            'start' => ['date', 'date_format:d/m/Y'],
+            'end' => ['nullable', 'date', 'date_format:d/m/Y'],
             'tag_id' => ['nullable', 'exists:tags,id'], // TODO: CHECK IF TAG BELONGS TO USER
             'description' => ['required', 'max:255'],
             'amount' => ['required', 'regex:/^\d*(\.\d{1,2})?$/'],

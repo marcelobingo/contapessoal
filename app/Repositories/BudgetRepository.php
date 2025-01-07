@@ -51,7 +51,7 @@ class BudgetRepository
 
     public function getActive()
     {
-        $today = date('Y-m-d');
+        $today = date('d/m/Y');
 
         return Budget::whereRaw('space_id = ?', [session('space_id')])
             ->whereRaw('starts_on <= ?', [$today])
@@ -97,7 +97,7 @@ class BudgetRepository
         if ($budget->period === 'daily') {
             return Spending::where('space_id', session('space_id'))
                 ->where('tag_id', $budget->tag->id)
-                ->whereRaw('happened_on = ?', [date('Y-m-d')])
+                ->whereRaw('happened_on = ?', [date('d/m/Y')])
                 ->sum('amount');
         }
 
@@ -122,7 +122,7 @@ class BudgetRepository
             'tag_id' => $tagId,
             'period' => $period,
             'amount' => $amount,
-            'starts_on' => date('Y-m-d')
+            'starts_on' => date('d/m/Y')
         ]);
     }
 }

@@ -39,7 +39,7 @@ class BudgetTest extends TestCase
             ->create([
                 'space_id' => $space->id,
                 'tag_id' => $tag->id,
-                'happened_on' => date('Y-m-d'),
+                'happened_on' => date('d/m/Y'),
                 'amount' => 100,
             ]);
 
@@ -70,7 +70,7 @@ class BudgetTest extends TestCase
             ->create([
                 'space_id' => $space->id,
                 'tag_id' => $tag->id,
-                'happened_on' => date('Y-m-d'),
+                'happened_on' => date('d/m/Y'),
                 'amount' => 100,
             ]);
 

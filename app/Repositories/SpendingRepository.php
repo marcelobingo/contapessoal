@@ -11,7 +11,7 @@ class SpendingRepository
     {
         return [
             'tag_id' => 'nullable|exists:tags,id', // TODO CHECK IF TAG BELONGS TO USER
-            'date' => 'required|date|date_format:Y-m-d',
+            'date' => 'required|date|date_format:d/m/Y',
             'description' => 'required|max:255',
             'currency_id' => 'nullable|exists:currencies,id',
             'amount' => 'required|regex:/^\d*(\.\d{2})?$/'

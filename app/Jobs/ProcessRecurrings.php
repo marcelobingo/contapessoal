@@ -73,7 +73,7 @@ class ProcessRecurrings implements ShouldQueue
             $occurancesDates = [];
 
             $startingDate = ($recurring->last_used_on ?: $recurring->starts_on);
-            $today = date('Y-m-d');
+            $today = date('d/m/Y');
 
             $cursorDate = $startingDate;
             while ($cursorDate <= $today) {
@@ -83,22 +83,22 @@ class ProcessRecurrings implements ShouldQueue
 
                 switch ($recurring->interval) {
                     case 'daily':
-                        $cursorDate = date('Y-m-d', strtotime('+1 day', strtotime((string) $cursorDate)));
+                        $cursorDate = date('d/m/Y', strtotime('+1 day', strtotime((string) $cursorDate)));
                         break;
 
                     case 'weekly':
-                        $cursorDate = date('Y-m-d', strtotime('+1 week', strtotime((string) $cursorDate)));
+                        $cursorDate = date('d/m/Y', strtotime('+1 week', strtotime((string) $cursorDate)));
                         break;
 
                     case 'biweekly':
-                        $cursorDate = date('Y-m-d', strtotime('+2 weeks', strtotime((string) $cursorDate)));
+                        $cursorDate = date('d/m/Y', strtotime('+2 weeks', strtotime((string) $cursorDate)));
                         break;
 
                     // Monthly is a different story, because of the different lengths of the months
                     // See below
 
                     case 'yearly':
-                        $cursorDate = date('Y-m-d', strtotime('+1 year', strtotime((string) $cursorDate)));
+                        $cursorDate = date('d/m/Y', strtotime('+1 year', strtotime((string) $cursorDate)));
                         break;
                 }
 
@@ -129,7 +129,7 @@ class ProcessRecurrings implements ShouldQueue
                         $day--;
                     }
 
-                    $cursorDate = date('Y-m-d', strtotime($year . '-' . $month . '-' . $day));
+                    $cursorDate = date('d/m/Y', strtotime($year . '-' . $month . '-' . $day));
                 }
             }
 

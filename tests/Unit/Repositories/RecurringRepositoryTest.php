@@ -34,7 +34,7 @@ class RecurringRepositoryTest extends TestCase
             'spending',
             'monthly',
             3,
-            date('Y-m-d'),
+            date('d/m/Y'),
             null,
             $tagId,
             'Foo',
@@ -72,7 +72,7 @@ class RecurringRepositoryTest extends TestCase
             'space_id' => $this->space->id,
             'type' => 'earning',
             'interval' => 'yearly',
-            'last_used_on' => date('Y-m-d', strtotime('-1 year'))
+            'last_used_on' => date('d/m/Y', strtotime('-1 year'))
         ]);
 
         $recurringsDueYearly = $this->recurringRepository->getDueYearly();
@@ -91,7 +91,7 @@ class RecurringRepositoryTest extends TestCase
             'space_id' => $this->space->id,
             'type' => 'earning',
             'interval' => 'yearly',
-            'last_used_on' => date('Y-m-d', strtotime('-364 days'))
+            'last_used_on' => date('d/m/Y', strtotime('-364 days'))
         ]);
 
         $recurringsDueYearly = $this->recurringRepository->getDueYearly();
@@ -113,7 +113,7 @@ class RecurringRepositoryTest extends TestCase
             'space_id' => $this->space->id,
             'type' => 'earning',
             'interval' => 'monthly',
-            'starts_on' => date('Y-m-d', strtotime('-1 month'))
+            'starts_on' => date('d/m/Y', strtotime('-1 month'))
         ]);
 
         $contains = false;
@@ -130,8 +130,8 @@ class RecurringRepositoryTest extends TestCase
             'space_id' => $this->space->id,
             'type' => 'earning',
             'interval' => 'monthly',
-            'starts_on' => date('Y-m-d', strtotime('-1 month')),
-            'last_used_on' => date('Y-m-d', strtotime('-1 month'))
+            'starts_on' => date('d/m/Y', strtotime('-1 month')),
+            'last_used_on' => date('d/m/Y', strtotime('-1 month'))
         ]);
 
         $contains = false;
@@ -148,8 +148,8 @@ class RecurringRepositoryTest extends TestCase
             'space_id' => $this->space->id,
             'type' => 'earning',
             'interval' => 'monthly',
-            'starts_on' => date('Y-m-d', strtotime('-1 month', strtotime('+ 1 day'))),
-            'last_used_on' => date('Y-m-d', strtotime('-1 month', strtotime('+ 1 day')))
+            'starts_on' => date('d/m/Y', strtotime('-1 month', strtotime('+ 1 day'))),
+            'last_used_on' => date('d/m/Y', strtotime('-1 month', strtotime('+ 1 day')))
         ]);
 
         $contains = false;
@@ -188,7 +188,7 @@ class RecurringRepositoryTest extends TestCase
             'space_id' => $this->space->id,
             'type' => 'earning',
             'interval' => 'biweekly',
-            'last_used_on' => date('Y-m-d', strtotime('-1 week'))
+            'last_used_on' => date('d/m/Y', strtotime('-1 week'))
         ]);
 
         $recurringsDueBiweekly = $this->recurringRepository->getDueBiweekly();
@@ -207,7 +207,7 @@ class RecurringRepositoryTest extends TestCase
             'space_id' => $this->space->id,
             'type' => 'earning',
             'interval' => 'biweekly',
-            'last_used_on' => date('Y-m-d', strtotime('-2 weeks'))
+            'last_used_on' => date('d/m/Y', strtotime('-2 weeks'))
         ]);
 
         $recurringsDueBiweekly = $this->recurringRepository->getDueBiweekly();
@@ -226,7 +226,7 @@ class RecurringRepositoryTest extends TestCase
             'space_id' => $this->space->id,
             'type' => 'earning',
             'interval' => 'biweekly',
-            'last_used_on' => date('Y-m-d', strtotime('-13 days'))
+            'last_used_on' => date('d/m/Y', strtotime('-13 days'))
         ]);
 
         $recurringsDueWeekly = $this->recurringRepository->getDueBiweekly();
@@ -267,7 +267,7 @@ class RecurringRepositoryTest extends TestCase
             'space_id' => $this->space->id,
             'type' => 'earning',
             'interval' => 'weekly',
-            'last_used_on' => date('Y-m-d', strtotime('-1 week'))
+            'last_used_on' => date('d/m/Y', strtotime('-1 week'))
         ]);
 
         $recurringsDueWeekly = $this->recurringRepository->getDueWeekly();
@@ -286,7 +286,7 @@ class RecurringRepositoryTest extends TestCase
             'space_id' => $this->space->id,
             'type' => 'earning',
             'interval' => 'weekly',
-            'last_used_on' => date('Y-m-d', strtotime('-6 days'))
+            'last_used_on' => date('d/m/Y', strtotime('-6 days'))
         ]);
 
         $recurringsDueWeekly = $this->recurringRepository->getDueWeekly();
@@ -324,7 +324,7 @@ class RecurringRepositoryTest extends TestCase
 
         // Assert that recurring (that has already been used today) is not due
         $this->recurringRepository->update($neverUsedRecurring->id, [
-            'last_used_on' => date('Y-m-d')
+            'last_used_on' => date('d/m/Y')
         ]);
 
         $recurringsDueDaily = $this->recurringRepository->getDueDaily();

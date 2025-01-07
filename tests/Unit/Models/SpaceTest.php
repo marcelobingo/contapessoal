@@ -52,7 +52,7 @@ class SpaceTest extends TestCase
         Earning::factory()->create([
             'space_id' => $space->id,
             'amount' => Helper::rawNumberToInteger(10),
-            'happened_on' => date_create_from_format('Y-m-d', '2018-01-01')
+            'happened_on' => date_create_from_format('d/m/Y', '2018-01-01')
         ]);
 
         // First is same as before, because earning happened on a different month
@@ -62,7 +62,7 @@ class SpaceTest extends TestCase
         Earning::factory()->create([
             'space_id' => 2,
             'amount' => Helper::rawNumberToInteger(10),
-            'happened_on' => date_create_from_format('Y-m-d', '2020-01-01')
+            'happened_on' => date_create_from_format('d/m/Y', '2020-01-01')
         ]);
 
         // 0 because different space-id

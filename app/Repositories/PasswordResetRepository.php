@@ -21,7 +21,7 @@ class PasswordResetRepository
         DB::table('password_resets')->insert([
             'email' => $email,
             'token' => $token,
-            'created_at' => date('Y-m-d H:i:s')
+            'created_at' => date('d/m/Y H:i:s')
         ]);
     }
 

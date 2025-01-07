@@ -1,7 +1,4 @@
 @extends('layout')
-
-@section('tailwind', true)
-
 @section('title', 'Log in')
 
 @section('body')

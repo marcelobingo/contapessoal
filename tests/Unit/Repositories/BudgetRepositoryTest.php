@@ -67,8 +67,8 @@ class BudgetRepositoryTest extends TestCase
         Budget::factory()->create([
             'space_id' => 1,
             'tag_id' => 2,
-            'starts_on' => date('Y-m-d', strtotime('-2 months')),
-            'ends_on' => date('Y-m-d', strtotime('-1 month'))
+            'starts_on' => date('d/m/Y', strtotime('-2 months')),
+            'ends_on' => date('d/m/Y', strtotime('-1 month'))
         ]);
 
         // Assert that expired budget returns false
@@ -94,8 +94,8 @@ class BudgetRepositoryTest extends TestCase
         Budget::factory()->create([
             'space_id' => 200,
             'tag_id' => $tag->id,
-            'starts_on' => date('Y-m-d', strtotime('first day of last month')),
-            'ends_on' => date('Y-m-d', strtotime('last day of last month'))
+            'starts_on' => date('d/m/Y', strtotime('first day of last month')),
+            'ends_on' => date('d/m/Y', strtotime('last day of last month'))
         ]);
 
         $this->withSession(['space_id' => 200]);
@@ -109,7 +109,7 @@ class BudgetRepositoryTest extends TestCase
         Budget::factory()->create([
             'space_id' => 200,
             'tag_id' => $tag->id,
-            'starts_on' => date('Y-m-d', strtotime('first day of this month'))
+            'starts_on' => date('d/m/Y', strtotime('first day of this month'))
         ]);
 
         $this->withSession(['space_id' => 200]);
@@ -193,7 +193,7 @@ class BudgetRepositoryTest extends TestCase
         Spending::factory()->create([
             'space_id' => $this->spaceId,
             'tag_id' => $tag->id,
-            'happened_on' => date('Y-m-d', strtotime('last year')),
+            'happened_on' => date('d/m/Y', strtotime('last year')),
             'amount' => 123
         ]);
 
@@ -203,7 +203,7 @@ class BudgetRepositoryTest extends TestCase
         Spending::factory()->create([
             'space_id' => $this->spaceId,
             'tag_id' => $tag->id,
-            'happened_on' => date('Y-m-d'),
+            'happened_on' => date('d/m/Y'),
             'amount' => 123
         ]);
 
@@ -229,7 +229,7 @@ class BudgetRepositoryTest extends TestCase
         Spending::factory()->create([
             'space_id' => $this->spaceId,
             'tag_id' => $tag->id,
-            'happened_on' => date('Y-m-d', strtotime('last month')),
+            'happened_on' => date('d/m/Y', strtotime('last month')),
             'amount' => 123
         ]);
 
@@ -239,7 +239,7 @@ class BudgetRepositoryTest extends TestCase
         Spending::factory()->create([
             'space_id' => $this->spaceId,
             'tag_id' => $tag->id,
-            'happened_on' => date('Y-m-d'),
+            'happened_on' => date('d/m/Y'),
             'amount' => 123
         ]);
 
@@ -265,7 +265,7 @@ class BudgetRepositoryTest extends TestCase
         Spending::factory()->create([
             'space_id' => $this->spaceId,
             'tag_id' => $tag->id,
-            'happened_on' => date('Y-m-d', strtotime('2 weeks ago')),
+            'happened_on' => date('d/m/Y', strtotime('2 weeks ago')),
             'amount' => 123
         ]);
 
@@ -275,7 +275,7 @@ class BudgetRepositoryTest extends TestCase
         Spending::factory()->create([
             'space_id' => $this->spaceId,
             'tag_id' => $tag->id,
-            'happened_on' => date('Y-m-d'),
+            'happened_on' => date('d/m/Y'),
             'amount' => 123
         ]);
 
@@ -301,7 +301,7 @@ class BudgetRepositoryTest extends TestCase
         Spending::factory()->create([
             'space_id' => $this->spaceId,
             'tag_id' => $tag->id,
-            'happened_on' => date('Y-m-d', strtotime('yesterday')),
+            'happened_on' => date('d/m/Y', strtotime('yesterday')),
             'amount' => 123
         ]);
 
@@ -311,7 +311,7 @@ class BudgetRepositoryTest extends TestCase
         Spending::factory()->create([
             'space_id' => $this->spaceId,
             'tag_id' => $tag->id,
-            'happened_on' => date('Y-m-d'),
+            'happened_on' => date('d/m/Y'),
             'amount' => 123
         ]);
 

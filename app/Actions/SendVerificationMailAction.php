@@ -32,7 +32,7 @@ class SendVerificationMailAction
         Mail::to($user->email)->queue(new VerifyRegistration($user));
 
         $user->fill([
-            'last_verification_mail_sent_at' => date('Y-m-d H:i:s')
+            'last_verification_mail_sent_at' => date('d/m/Y H:i:s')
         ])->save();
     }
 }

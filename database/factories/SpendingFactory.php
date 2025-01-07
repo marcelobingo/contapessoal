@@ -12,7 +12,7 @@ class SpendingFactory extends Factory
     public function definition(): array
     {
         return [
-            'happened_on' => $this->faker->dateTimeBetween('-50 days', 'now')->format('Y-m-d'),
+            'happened_on' => $this->faker->dateTimeBetween('-50 days', 'now')->format('d/m/Y'),
             'description' => implode(' ', array_map('ucfirst', $this->faker->words(3))),
             'amount' => $this->faker->randomNumber(3)
         ];

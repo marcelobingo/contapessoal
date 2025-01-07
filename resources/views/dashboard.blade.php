@@ -30,7 +30,7 @@
             </div>
         @endif
         <div class="box mt-3">
-            <div class="box__section box__section--header">Daily Balance</div>
+            <div class="box__section box__section--header">{{ __('models.dailybalances') }}</div>
             <div class="box__section">
                 <div class="ct-chart ct-major-twelfth"></div>
             </div>

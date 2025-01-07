@@ -15,7 +15,7 @@ class RecurringFactory extends Factory
             'type' => 'earning',
             'interval' => 'monthly',
             'day' => $this->faker->numberBetween(1, 28),
-            'starts_on' => $this->faker->dateTimeBetween('-50 days', 'now')->format('Y-m-d'),
+            'starts_on' => $this->faker->dateTimeBetween('-50 days', 'now')->format('d/m/Y'),
             'description' => implode(' ', array_map('ucfirst', $this->faker->words(3))),
             'amount' => $this->faker->randomNumber(3)
         ];

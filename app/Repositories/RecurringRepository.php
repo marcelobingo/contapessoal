@@ -16,8 +16,8 @@ class RecurringRepository
             'day' => ['required',
                 'regex:/\b(0?[1-9]|[12][0-9]|3[01])\b/',
             ],
-            'start' => 'date|date_format:Y-m-d',
-            'end' => 'nullable|date|date_format:Y-m-d',
+            'start' => 'date|date_format:d/m/Y',
+            'end' => 'nullable|date|date_format:d/m/Y',
             'tag' => 'nullable|exists:tags,id', // TODO CHECK IF TAG BELONGS TO USER
             'description' => 'required|max:255',
             'amount' => 'required|regex:/^\d*(\.\d{2})?$/',
@@ -38,8 +38,8 @@ class RecurringRepository
 
     public function getDueYearly(): Collection
     {
-        $dateToday = date('Y-m-d');
-        $dateYearAgo = date('Y-m-d', strtotime('-1 year'));
+        $dateToday = date('d/m/Y');
+        $dateYearAgo = date('d/m/Y', strtotime('-1 year'));
 
         return Recurring::where('interval', 'yearly')
             ->where('starts_on', '<=', $dateToday)
@@ -65,11 +65,11 @@ class RecurringRepository
      */
     public function getDueMonthly(): Collection
     {
-        $dateToday = date('Y-m-d');
-        $lastDateCurrentMonth = date('Y-m-d', strtotime('last day of this month'));
+        $dateToday = date('d/m/Y');
+        $lastDateCurrentMonth = date('d/m/Y', strtotime('last day of this month'));
 
-        $dateMonthAgo = date('Y-m-d', strtotime('-1 month'));
-        $lastDateLastMonth = date('Y-m-d', strtotime('last day of last month'));
+        $dateMonthAgo = date('d/m/Y', strtotime('-1 month'));
+        $lastDateLastMonth = date('d/m/Y', strtotime('last day of last month'));
 
         $query = Recurring::where('interval', 'monthly')
             ->where('starts_on', '<=', $dateToday)
@@ -98,8 +98,8 @@ class RecurringRepository
 
     public function getDueBiweekly(): Collection
     {
-        $dateToday = date('Y-m-d');
-        $dateTwoWeeksAgo = date('Y-m-d', strtotime('-2 weeks'));
+        $dateToday = date('d/m/Y');
+        $dateTwoWeeksAgo = date('d/m/Y', strtotime('-2 weeks'));
 
         return Recurring::where('interval', 'biweekly')
             ->where('starts_on', '<=', $dateToday)
@@ -118,8 +118,8 @@ class RecurringRepository
 
     public function getDueWeekly(): Collection
     {
-        $dateToday = date('Y-m-d');
-        $dateWeekAgo = date('Y-m-d', strtotime('-1 week'));
+        $dateToday = date('d/m/Y');
+        $dateWeekAgo = date('d/m/Y', strtotime('-1 week'));
 
         return Recurring::where('interval', 'weekly')
             ->where('starts_on', '<=', $dateToday)
@@ -138,7 +138,7 @@ class RecurringRepository
 
     public function getDueDaily(): Collection
     {
-        $dateToday = date('Y-m-d');
+        $dateToday = date('d/m/Y');
 
         return Recurring::where('interval', 'daily')
             ->where('starts_on', '<=', $dateToday)

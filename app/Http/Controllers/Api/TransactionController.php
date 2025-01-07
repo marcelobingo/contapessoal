@@ -38,7 +38,7 @@ class TransactionController extends Controller
         $request->validate([
             'type' => ['required', 'in:earning,spending'],
             'tag_id' => ['nullable', 'exists:tags,id'], // TODO: CHECK IF TAG BELONGS TO USER
-            'happened_on' => ['required', 'date', 'date_format:Y-m-d'],
+            'happened_on' => ['required', 'date', 'date_format:d/m/Y'],
             'description' => ['required', 'max:255'],
             'amount' => ['required', 'regex:/^\d*(\.\d{1,2})?$/'],
         ]);

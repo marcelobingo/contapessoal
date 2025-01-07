@@ -21,13 +21,13 @@ class Spent
         if ($this->properties->period === 'today') {
             $spent = Spending::query()
                 ->where('space_id', session('space_id'))
-                ->whereRaw('DATE(happened_on) = ?', [date('Y-m-d')])
+                ->whereRaw('DATE(happened_on) = ?', [date('d/m/Y')])
                 ->sum('amount');
         }
 
         if ($this->properties->period === 'this_week') {
-            $monday = date('Y-m-d', strtotime('monday this week'));
-            $sunday = date('Y-m-d', strtotime('sunday this week'));
+            $monday = date('d/m/Y', strtotime('monday this week'));
+            $sunday = date('d/m/Y', strtotime('sunday this week'));
 
             $spent = Spending::query()
                 ->where('space_id', session('space_id'))

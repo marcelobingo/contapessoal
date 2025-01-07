@@ -36,7 +36,7 @@ class SendVerificationMailTest extends TestCase
 
         $user = User::factory()->create([
             'verification_token' => 'abc123',
-            'last_verification_mail_sent_at' => date('Y-m-d H:i:s', strtotime('1 minute ago'))
+            'last_verification_mail_sent_at' => date('d/m/Y H:i:s', strtotime('1 minute ago'))
         ]);
 
         (new SendVerificationMailAction())->execute($user->id);
@@ -44,7 +44,7 @@ class SendVerificationMailTest extends TestCase
 
     public function testSuccessfullySent(): void
     {
-        $firstVerificationMailSentAt = date('Y-m-d H:i:s', strtotime('7 minute ago'));
+        $firstVerificationMailSentAt = date('d/m/Y H:i:s', strtotime('7 minute ago'));
 
         $user = User::factory()->create([
             'verification_token' => 'abc123',

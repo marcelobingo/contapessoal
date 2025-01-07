@@ -28,8 +28,8 @@ class SendWeeklyReports implements ShouldQueue
     {
         $spaces = Space::all();
         $week = date('W');
-        $lastWeekDate = date('Y-m-d', strtotime('-7 days'));
-        $currentDate = date('Y-m-d');
+        $lastWeekDate = date('d/m/Y', strtotime('-7 days'));
+        $currentDate = date('d/m/Y');
 
         foreach ($spaces as $space) {
             $totalSpent = DB::select('

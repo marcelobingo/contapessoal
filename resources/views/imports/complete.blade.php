@@ -12,7 +12,7 @@
                     <div class="input input--small mb-0">
                         <label>Date Format</label>
                         <select name="date_format">
-                            <option value="Y-m-d" {{ old('date_format') == 'Y-m-d' ? 'selected' : '' }}>YYYY-MM-DD</option>
+                            <option value="d/m/Y" {{ old('date_format') == 'd/m/Y' ? 'selected' : '' }}>YYYY-MM-DD</option>
                             <option value="Y/m/d" {{ old('date_format') == 'Y/m/d' ? 'selected' : '' }}>YYYY/MM/DD</option>
                             <option value="Ymd" {{ old('date_format') == 'Ymd' ? 'selected' : '' }}>YYYYMMDD</option>
                         </select>
